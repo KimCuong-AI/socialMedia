@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Grid } from '@mui/material';
+import { makeStyles, ThemeProvider } from '@mui/styles';
+import React from 'react';
+import Add from './Component/Add';
+import Feed from './Component/Feed';
+import Leftbar from './Component/Leftbar';
+import Navbar from './Component/Navbar';
+import Rightbar from './Component/Rightbar';
+import { theme } from './Theme';
+const useStyles = makeStyles((theme) => ({
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+}))
+const App = () => {
+    const classes = useStyles();
+    return (
+        <div>
+            <ThemeProvider theme={theme} >
+                <Navbar />
+                <Grid container>
+                    <Grid item xs={2} >
+                        <Leftbar />
+                    </Grid>
+
+                    <Grid item xs={7}>
+                        <Feed />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <Rightbar />
+                    </Grid>
+                </Grid>
+                <Add/>
+
+            </ThemeProvider>
+
+        </div>
+
+    );
 }
-
 export default App;
